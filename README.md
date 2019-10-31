@@ -1,2 +1,2 @@
 # FlinkReadKafka
-Java example to read from Kafka using Flink 1.7
+Java example to read from Kafka using Flink 1.8
