@@ -4,8 +4,9 @@ import org.apache.flink.api.common.restartstrategy.RestartStrategies;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer010;
+import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
 import org.apache.flink.streaming.util.serialization.SimpleStringSchema;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
 
 
 public class FlinkReadKafka {
@@ -24,7 +25,7 @@ public class FlinkReadKafka {
         env.getConfig().setGlobalJobParameters(params);
 
         DataStream<String> messageStream = env
-                .addSource(new FlinkKafkaConsumer010<>(
+                .addSource(new FlinkKafkaConsumer<>(
                         params.getRequired("topic"),
                         new SimpleStringSchema(),
                         params.getProperties()));
